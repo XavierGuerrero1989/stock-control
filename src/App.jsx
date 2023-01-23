@@ -1,14 +1,21 @@
 import { useState } from 'react'
-import './App.css'
+import './App.scss'
+import Navbar from './componentes/navbar/Navbar'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <div className="App">
-      Hola Mundo
-    </div>
+    
+      <BrowserRouter>
+        <Navbar />
+        <Routes>
+          {/* <Route path='/' element={<  />} /> */}
+
+
+        </Routes>
+      </BrowserRouter>
+
   )
 }
-
 export default App
