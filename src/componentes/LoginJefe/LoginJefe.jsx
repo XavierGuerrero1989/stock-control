@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Form, Button, Container, Alert } from 'react-bootstrap';
 
-const Login = () => {
+const LoginJefe = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
@@ -18,10 +18,10 @@ const Login = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (username === 'Admin' && password === 'password') {
+    if (username === 'Jefe' && password === '123456') {
       setError(null);
       console.log(`Login successful!`);
-      navigate('/AdminHome');
+      navigate('/JefeHome');
     } else {
       setError('Nombre de usuario o contraseña INVALIDOS. Por favor intente nuevamente.');
     }
@@ -64,4 +64,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default LoginJefe;

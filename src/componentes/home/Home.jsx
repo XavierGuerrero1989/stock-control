@@ -3,6 +3,7 @@ import Navbar from '../navbar/Navbar'
 import Admin from '../../assets/admin.png'
 import Obra from '../../assets/obra.png'
 import Back from '../../assets/construccion.jpg'
+import Stack from 'react-bootstrap/Stack';
 import { Link } from 'react-router-dom'
 
 
@@ -15,20 +16,20 @@ const Home = () => {
     <div className='Container-fluid home' style={{ 
         backgroundImage: `url(${Back})`
       }}>
-        <div className='row'>
-            <div className='col-md-2'></div>
+        <Stack className='row align-items-center' direction="vertical" >
+            
             <div className='col-md-2 home__img__ctn text-center'>
-                <span>Login Administrador</span>
+                <span className='home__titleName'>Login Administrador</span>
                 <Link to='/admin'><img src={Admin} className='home__img'></img></Link>
             </div>
-            <div className='col-md-2'></div>
-            <div className='col-md-2'></div>
+            
+            
             <div className='col-md-2 home__img__ctn text-center'>
-                <span>Login Jefe de Obra</span>
+                <span className='home__titleName'>Login Jefe de Obra</span>
                 <Link to='/jefe'><img src={Obra} className='home__img'></img></Link>
             </div>
-            <div className='col-md-2'></div>
-        </div>
+            
+        </Stack>
 
     </div>
   )

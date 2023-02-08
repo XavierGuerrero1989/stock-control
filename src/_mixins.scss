@@ -1,0 +1,29 @@
+$small: 576px;
+$medium: 768px;
+$large: 992px;
+$extra-large: 1200px;
+$extra-extra-large: 1600px;
+
+@mixin breakpoint($size) {
+  @if $size == small {
+    @media (min-width: $small) {
+      @content;
+    }
+  } @else if $size == medium {
+    @media (min-width: $medium) {
+      @content;
+    }
+  } @else if $size == large {
+    @media (min-width: $large) {
+      @content;
+    }
+  } @else if $size == extra-large {
+    @media (min-width: $extra-large) {
+      @content;
+    }
+  } @else if $size == extra-extra-large {
+    @media (min-width: $extra-extra-large) {
+      @content;
+    }
+  }
+}

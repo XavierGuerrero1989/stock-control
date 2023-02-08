@@ -7,7 +7,7 @@ function ContainerInsideExample() {
 
     <div className='container-fluid navbarctn'>
       <div className='row justify-content-center'>
-        <img src={Logo} className='col-md-6 navbarctn__img'></img>
+        <img src={Logo} className='col-md-2 navbarctn__img'></img>
       </div>
     </div>
 
