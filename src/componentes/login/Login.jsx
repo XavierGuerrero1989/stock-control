@@ -1,67 +1,66 @@
 import React, { useState } from 'react';
+import { Stack } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import { Form, Button, Container, Alert } from 'react-bootstrap';
+import Navbar from '../navbar/Navbar';
+import Obra from '../../assets/construccion.jpg'
 
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState(null);
+  const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
-
-  const handleUsernameChange = (event) => {
-    setUsername(event.target.value);
-  };
-
-  const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
-  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (username === 'Admin' && password === 'password') {
-      setError(null);
-      console.log(`Login successful!`);
-      navigate('/AdminHome');
+    if (username === 'admin' && password === 'admin') {
+      navigate('/adminHome');
+    } else if (username === 'jefe' && password === 'jefe') {
+      navigate('/jefeHome');
     } else {
-      setError('Nombre de usuario o contraseña INVALIDOS. Por favor intente nuevamente.');
+      setErrorMessage('Usuario o Contraseña incorrectos.');
     }
   };
 
   return (
-    <Container className="d-flex justify-content-center mt-5">
-      <Form onSubmit={handleSubmit} style={{ width: '30%' }}>
-        <Form.Group controlId="formUsername">
-          <Form.Label>Nombre de Usuario</Form.Label>
-          <Form.Control
-            type="text"
-            value={username}
-            onChange={handleUsernameChange}
-            placeholder="Usuario"
-          />
-        </Form.Group>
-
-        <Form.Group controlId="formPassword">
-          <Form.Label>Contraseña</Form.Label>
-          <Form.Control
-            type="password"
-            value={password}
-            onChange={handlePasswordChange}
-            placeholder="Contraseña"
-          />
-        </Form.Group>
-
-        {error && (
-          <Alert variant="danger">
-            {error}
-          </Alert>
-        )}
-
-        <Button variant="primary" type="submit">
-          Ingresar
-        </Button>
-      </Form>
-    </Container>
+    <div>
+      <Navbar />
+      <Stack gap={3} className="container-fluid loginBack" style={{ backgroundImage:`url(${Obra})`,backgroundRepeat:"no-repeat",backgroundSize:"cover" }}>
+        <form onSubmit={handleSubmit} className="row input__row">
+          <div className="form-group col-md-2 input text-center">
+            <label htmlFor="username">Nombre de Usuario:</label>
+            <input
+              type="text"
+              className="form-control"
+              id="username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+          </div>
+          <div className="form-group col-md-2 input text-center">
+            <label htmlFor="password">Contraseña:</label>
+            <input
+              type="password"
+              className="form-control"
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
+          {errorMessage !== '' && (
+            <div className="alert col-md-2 alert-danger text-center" role="alert">
+              {errorMessage}
+            </div>
+          )}
+          
+            <button type="submit" className="btn col-md-1 btn-primary text-center">
+            Ingresar
+            </button>
+          
+        </form>
+      </Stack>
+    </div>
   );
 };
 
 export default Login;
+

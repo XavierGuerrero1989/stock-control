@@ -1,0 +1,18 @@
+.loginBack{
+    height: 90vh;
+}
+
+.input{
+    margin: 10px;
+
+    &__row{
+        margin-top: 40px;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    &__boton{
+        margin: 10px;
+        width: 4vw;
+    }
+}
