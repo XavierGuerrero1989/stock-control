@@ -1,8 +1,13 @@
 import React from 'react'
+import NavAdmin from '../navAdmin/NavAdmin'
 
 const AdminHome = () => {
   return (
-    <div>AdminHome</div>
+    <div>
+    < NavAdmin />
+    
+
+    </div>
   )
 }
 
