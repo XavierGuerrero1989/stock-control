@@ -1,23 +1,44 @@
 import React, {useEffect} from 'react'
 import { collection , getDocs , getFirestore } from "firebase/firestore";
+import { useState } from 'react';
+import Parcializador from '../parcializador/Parcializador';
+import NavAdmin from '../navAdmin/NavAdmin'
 
 
 const StockDia = () => {
 
+    const [locations, setLocations] = useState([]);
+
     useEffect(() => {
         const dataBase = getFirestore();
-        const myCollection = collection(dataBase, 'cuadrilla1')
+        const myCollection = collection(dataBase, 'locations')
 
         getDocs(myCollection).then((data) => {
-            console.log(data.docs[0].data())
+          const auxCuadrillas = data.docs.map ((cuadrilla) => ({
+                    ...cuadrilla.data(),
+                    id: cuadrilla.id,
+                  }))
+          setLocations(auxCuadrillas);
         })
-
-
+  
     }, []) ;
 
     
   return (
-    <div>StockDia</div>
+    <>
+      < NavAdmin />
+      <div className='container-fluid'>
+        <div className="row text-center">
+          <h1 className="col-md-12">Stocks Actualizados</h1>
+        </div>
+      </div>
+      <div>
+        {locations.map((location) => (
+        <Parcializador location={location}  />
+        ))}
+      </div>
+    </>
+    
   )
 }
 

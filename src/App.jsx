@@ -17,9 +17,8 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path='/' element={< Login />} />
-          <Route path='/adminHome' element={< AdminHome />} />
+          <Route path='/adminHome' element={< StockDia />} />
           <Route path='/jefeHome' element={< JefeObraHome />} />
-          <Route path='/stock' element={< StockDia />} />
           <Route path='/consumos' element={< Consumos />} />
           <Route path='/historicos' element={< Historicos />} />
           <Route path='/costos' element={< Costos />} />

@@ -19,7 +19,6 @@ function BasicExample() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="/stock">Stock del día</Nav.Link>
             <Nav.Link href="/consumos">Consumos del día</Nav.Link>
             <Nav.Link href="/historicos">Informe de historicos</Nav.Link>
             <Nav.Link href="/costos">Informe de costos</Nav.Link>
