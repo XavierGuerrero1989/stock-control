@@ -1,12 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import NavAdmin from '../navAdmin/NavAdmin'
 import { Container, Row, Col, Button, Form } from 'react-bootstrap';
+import Swal from 'sweetalert2';
+
+
 
 const Consumos = () => {
 
   const [formValues, setFormValues] = useState([]);
   const [rows, setRows] = useState([{ selectValue: '', inputValue: '' }]);
   const [initialRows, setInitialRows] = useState(rows);
+  
+
+
+  const alerta=()=>{
+    Swal.fire({
+      icon: 'success',
+      title: 'Exito',
+      text: 'Actualizaste el Stock con Exito.',
+    })
+  }
 
   const handleAddRow = () => {
     setRows([...rows, { selectValue: '', inputValue: '' }]);
@@ -37,6 +50,8 @@ const Consumos = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
+    alerta();
+
     const formValues = rows.map((row) => ({
       material: row.selectValue,
       quantity: row.inputValue,
@@ -47,12 +62,18 @@ const Consumos = () => {
     handleReset();
   };
 
+
   
 
   return (
     <>
     <NavAdmin />
     <Container>
+      <Row className='align-items-center'>
+        <Col xs={4}>
+          <span>Ingrese los movimientos de Stock</span>
+        </Col>
+      </Row>
       <Row>
         <Col xs={4}>
           <Form.Select aria-label="Default select example" className='col-md-6'>
@@ -104,7 +125,7 @@ const Consumos = () => {
       ))}
 
       <Col xs="auto" className="my-1">
-          <Button type="submit" onClick={handleSubmit}>Submit</Button>
+          <Button type="submit" onClick={handleSubmit}> Enviar Datos </Button>
       </Col>
     </Container>
     </>
